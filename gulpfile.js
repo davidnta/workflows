@@ -10,6 +10,7 @@ var gulp = require('gulp'),
 	jsonminify = require('gulp-jsonminify'), 
 	imagemin = require('gulp-imagemin'), 
 	pngcrush = require('imagemin-pngcrush'), 
+	ftp = require('vinyl-ftp'),
 	concat = require('gulp-concat');
 
 var env,
@@ -113,4 +114,27 @@ gulp.task('json', function(){
 	.pipe(connect.reload())
 });
 
-gulp.task('default', ['html', 'coffee', 'js', 'compass', 'images', 'connect','watch']);
+/* gulp.task('deploy', function() {
+	var conn = ftp.create({
+		host: '192.168.1.18',
+		user: 'davidnta',
+		password: 'Nihonjin01!',
+		log: gutil.log
+	});
+
+	var globs = [
+		'css/**',
+		'images/**',
+		'js/**',
+		'index.html'
+	];
+
+	// using base = '.' will transfer everything to /public_html correctly
+    // turn off buffering in gulp.src for best performance
+
+	return gulp.src( globs, { base: '.', buffer: false })
+		.pipe( gulpif(env === 'production', conn.newer( '/var/www/html/demo/workflow' )) ) // only upload newer files
+		.pipe( gulpif(env === 'production', conn.dest ( '/var/www/html/demo/workflow' )) );
+}); */
+
+gulp.task('default', ['html', 'coffee', 'js', 'compass', 'images', 'connect', 'watch']);

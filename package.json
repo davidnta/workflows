@@ -24,6 +24,7 @@
     "gulp-util": "^3.0.6",
     "imagemin-pngcrush": "^4.1.0",
     "jquery": "^2.1.4",
-    "mustache": "^2.1.2"
+    "mustache": "^2.1.2",
+    "vinyl-ftp": "^0.4.4"
   }
 }
